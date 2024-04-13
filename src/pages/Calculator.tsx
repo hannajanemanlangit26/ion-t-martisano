@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonInput, IonGrid, IonRow, IonCol, IonLabel } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonInput, IonGrid, IonRow, IonCol, IonLabel, IonButtons, IonBackButton } from '@ionic/react';
 import './Calculator.css';
 import { calculator } from 'ionicons/icons';
 
@@ -28,15 +28,13 @@ const Calculator: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/" />
+          </IonButtons>
           <IonTitle>Calculator</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Calculator</IonTitle>
-          </IonToolbar>
-        </IonHeader>
         <IonGrid>
           <IonRow>
             <IonCol>

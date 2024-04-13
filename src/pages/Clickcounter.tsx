@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButtons, IonBackButton } from '@ionic/react';
 import './Clickcounter.css';
 
 const Clickcounter: React.FC = () => {
@@ -18,7 +17,10 @@ const Clickcounter: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>click counter</IonTitle>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/" />
+          </IonButtons>
+          <IonTitle>Click Counter</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
