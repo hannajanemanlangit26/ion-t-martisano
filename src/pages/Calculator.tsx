@@ -75,4 +75,4 @@ const Calculator: React.FC = () => {
   );
 };
 
-export default calculator;
+export default Calculator;
