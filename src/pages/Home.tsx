@@ -1,56 +1,58 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonList, IonItem, IonAvatar, IonTextarea, IonButton, IonIcon, IonFooter, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/react';
-import { camera, search, heartOutline, personCircleOutline, heartCircleOutline, heartCircleSharp } from 'ionicons/icons';
-import './Home.css';
+import {
+  IonButton,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonThumbnail,
+} from '@ionic/react';
 
-const Home: React.FC = () => {
+import './home.css';
+
+function Home() {
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Instagram</IonTitle>
-          <IonButton slot="end">
-            <IonIcon icon={camera} />
-          </IonButton>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
+    <IonCard>
+      <IonCardHeader>
+        <IonCardTitle>Card Title</IonCardTitle>
+        <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+      </IonCardHeader>
+      <IonCardContent>
         <IonList>
-          <IonCard className="post-card">
-            <IonItem>
-              <IonAvatar slot="start">
-                <img alt="Silhouette of mountains" id="profile_pic" src="../src/assets/hanny.jpg" />
-              </IonAvatar>
-              <IonTextarea className="post-input" autoGrow placeholder="What's on your mind?" />
-            </IonItem>
-            <IonCardContent>
-                 <img alt="Sunset" src="../src/assets/sunset.jpeg" />
-                 <img alt="Sun" src="../src/assets/sun.avif" />
-                <p style={{ fontSize: '30px' }}>"I can count on my fingers the number of sunsets I have left, and I don't want to miss any of them."</p>
-            </IonCardContent>
-            <IonButton>
-              <IonIcon icon={heartCircleSharp} />
-            </IonButton>
+          <IonItem>
+            <IonThumbnail slot="start">
+              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+            </IonThumbnail>
+            <IonButton href='clickcounter'>Clickcounter</IonButton>
+          </IonItem>
 
-          </IonCard>
-          {/* Add more cards for additional posts */}
+          <IonItem>
+            <IonThumbnail slot="start">
+              <img alt="Silhouette of mountains" src="../src/assets/calcu.webp" />
+            </IonThumbnail>
+            <IonButton href='/Calculator'>Calculator</IonButton>
+          </IonItem>
+
+          <IonItem>
+            <IonThumbnail slot="start">
+              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+            </IonThumbnail>
+            <IonLabel>Todo-List</IonLabel>
+          </IonItem>
+
+          <IonItem lines="none">
+            <IonThumbnail slot="start">
+              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+            </IonThumbnail>
+            <IonLabel></IonLabel>
+          </IonItem>
         </IonList>
-      </IonContent>
-      <IonFooter>
-        <IonToolbar>
-          <IonButton>
-            <IonIcon icon={search} />
-          </IonButton>
-          <IonButton>
-            <IonIcon icon={heartOutline} />
-          </IonButton>
-          <IonButton>
-            <IonIcon icon={personCircleOutline} />
-          </IonButton>
-        </IonToolbar>
-      </IonFooter>
-    </IonPage>
+      </IonCardContent>
+    </IonCard>
   );
-};
-
+}
 export default Home;
