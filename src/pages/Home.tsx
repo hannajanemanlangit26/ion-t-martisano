@@ -25,7 +25,7 @@ function Home() {
         <IonList>
           <IonItem>
             <IonThumbnail slot="start">
-              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+              <img alt="Silhouette of mountains" src="../src/assets/click.webp" />
             </IonThumbnail>
             <IonButton href='clickcounter'>Clickcounter</IonButton>
           </IonItem>
