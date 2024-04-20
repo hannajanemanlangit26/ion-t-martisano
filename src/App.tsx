@@ -15,6 +15,7 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Clickcounter from './pages/Clickcounter';
 import Calculator from './pages/Calculator';
+import TodoList from './pages/TodoList'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -42,6 +43,11 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
+
+        <Route exact path="/TodoList">
+            <TodoList />
+          </Route>
+
           {/* Home Router */}
           <Route exact path="/Home">
             <Home />
