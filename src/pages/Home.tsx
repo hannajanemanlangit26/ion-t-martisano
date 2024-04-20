@@ -18,8 +18,8 @@ function Home() {
   return (
     <IonCard>
       <IonCardHeader>
-        <IonCardTitle>Welcome to my Application</IonCardTitle>
-        <IonCardSubtitle></IonCardSubtitle>
+        <IonCardTitle>Card Title</IonCardTitle>
+        <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
       </IonCardHeader>
       <IonCardContent>
         <IonList>
@@ -39,9 +39,9 @@ function Home() {
 
           <IonItem>
             <IonThumbnail slot="start">
-              <img alt="Silhouette of mountains" src="../src/assets/todo.png" />
+              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
             </IonThumbnail>
-            <IonButton href='/TodoList'>TodoList</IonButton>
+            <IonLabel>Todo-List</IonLabel>
           </IonItem>
 
           <IonItem lines="none">
