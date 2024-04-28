@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   IonButton,
   IonCard,
@@ -15,44 +15,47 @@ import {
 import './home.css';
 
 function Home() {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const items = [
+    { id: 1, label: 'Clickcounter', thumbnail: '../src/assets/click.webp', href: 'clickcounter' },
+    { id: 2, label: 'Calculator', thumbnail: '../src/assets/calcu.webp', href: '/Calculator' },
+    { id: 3, label: 'TodoList', thumbnail: '../src/assets/todo.png', href: '/TodoList' },
+  ];
+
+  const filteredItems = items.filter((item) =>
+    item.label.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <IonCard>
       <IonCardHeader>
-        <IonCardTitle>Welcome to my Application</IonCardTitle>
+        <IonCardTitle className="app-title">Welcome to my Application</IonCardTitle>
         <IonCardSubtitle></IonCardSubtitle>
       </IonCardHeader>
-      <IonCardContent>
-        <IonList>
+      <IonCardContent className="card-content">
+        <IonList className="centered-list">
           <IonItem>
-            <IonThumbnail slot="start">
-              <img alt="Silhouette of mountains" src="../src/assets/click.webp" />
-            </IonThumbnail>
-            <IonButton href='clickcounter'>Clickcounter</IonButton>
+          <input
+          type="text"
+          placeholder="Search..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="centered-input"
+          />
           </IonItem>
-
-          <IonItem>
-            <IonThumbnail slot="start">
-              <img alt="Silhouette of mountains" src="../src/assets/calcu.webp" />
-            </IonThumbnail>
-            <IonButton href='/Calculator'>Calculator</IonButton>
-          </IonItem>
-
-          <IonItem>
-            <IonThumbnail slot="start">
-              <img alt="Silhouette of mountains" src="../src/assets/todo.png" />
-            </IonThumbnail>
-            <IonButton href='/TodoList'>TodoList</IonButton>
-          </IonItem>
-
-          <IonItem lines="none">
-            <IonThumbnail slot="start">
-              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-            </IonThumbnail>
-            <IonLabel></IonLabel>
-          </IonItem>
+          {filteredItems.map((item) => (
+            <IonItem key={item.id}>
+              <IonThumbnail slot="start">
+                <img alt="Silhouette of mountains" src={item.thumbnail} />
+              </IonThumbnail>
+              <IonButton href={item.href}>{item.label}</IonButton>
+            </IonItem>
+          ))}
         </IonList>
       </IonCardContent>
     </IonCard>
   );
 }
+
 export default Home;
