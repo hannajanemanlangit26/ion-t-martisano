@@ -24,6 +24,7 @@ import {
   IonItemDivider,
   IonSearchbar,
   IonBadge
+  
 } from '@ionic/react';
 
 //Custom CSS
@@ -103,14 +104,9 @@ const Home: React.FC = () => {
                         <IonCol size="auto">
                             <div className="home-card-title">{card.title}</div>
                             <IonCardSubtitle>{card.subtitle}</IonCardSubtitle>
-                            {card.tags && Object.entries(card.tags).map(([key, icon], i) => (
-                              <IonIcon
-                                key={i}
-                                className="home-card-subicon"
-                                icon={icon}
-                                color="primary" // Set color as needed
-                              />
-                            ))}
+                            
+                            
+                                
                           </IonCol>
                       </IonRow>
                     </IonGrid>
