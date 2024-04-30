@@ -1,61 +1,127 @@
 import React, { useState } from 'react';
 import {
+  IonBackButton,
   IonButton,
+  IonButtons,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
+  IonCol,
+  IonContent,
+  IonGrid,
+  IonHeader,
+  IonIcon,
+  IonInput,
   IonItem,
   IonLabel,
   IonList,
-  IonThumbnail,
+  IonPage,
+  IonRow,
+  IonTitle,
+  IonToolbar,
+  IonItemDivider,
+  IonSearchbar,
+  IonBadge
 } from '@ionic/react';
 
+//Custom CSS
 import './home.css';
 
-function Home() {
-  const [searchQuery, setSearchQuery] = useState('');
+//Ionic Icons
+import { speedometerOutline,calculator,pencil, chatbubble, readerOutline, logoIonic,logoFirebase, logoReact} from 'ionicons/icons';
 
-  const items = [
-    { id: 1, label: 'Clickcounter', thumbnail: '../src/assets/click.webp', href: 'clickcounter' },
-    { id: 2, label: 'Calculator', thumbnail: '../src/assets/calcu.webp', href: '/Calculator' },
-    { id: 3, label: 'TodoList', thumbnail: '../src/assets/todo.png', href: '/TodoList' },
-  ];
+const cardData = [
+  {
+    title: 'Click Counter',
+    icon: speedometerOutline,
+    subtitle: 'Applet #1',
+    link: '/clickcounter',
+    
 
-  const filteredItems = items.filter((item) =>
-    item.label.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  },
+  {
+    title: 'Calculator',
+    icon: calculator,
+    subtitle: 'Applet #2',
+    link: '/calculator',
+   
+  },
+  {
+    title: 'To Do List',
+    icon: pencil,
+    subtitle: 'Applet #3',
+    link: '/todolist',
 
-  return (
-    <IonCard>
-      <IonCardHeader>
-        <IonCardTitle className="app-title">Welcome to my Application</IonCardTitle>
-        <IonCardSubtitle></IonCardSubtitle>
-      </IonCardHeader>
-      <IonCardContent className="card-content">
-        <IonList className="centered-list">
-          <IonItem>
-          <input
-          type="text"
-          placeholder="Search..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="centered-input"
+  },
+  {
+    title: 'Quote Generator',
+    icon: chatbubble,
+    subtitle: 'Applet #4',
+    link: '/quotegenerator',
+   
+  },
+  
+];
+
+const Home: React.FC = () => {
+  {/*Dynamic Search*/}
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  
+    return (
+      <IonPage>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Home</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent fullscreen>
+          <IonHeader collapse="condense">
+            <IonToolbar>
+              <IonTitle size="large">Home</IonTitle>
+            </IonToolbar>
+          </IonHeader>
+          
+          {/*Dynamic Search*/}
+          <IonSearchbar 
+            value={searchTerm} 
+            onIonInput={(e) => setSearchTerm(e.target.value ?? '')} 
           />
-          </IonItem>
-          {filteredItems.map((item) => (
-            <IonItem key={item.id}>
-              <IonThumbnail slot="start">
-                <img alt="Silhouette of mountains" src={item.thumbnail} />
-              </IonThumbnail>
-              <IonButton href={item.href}>{item.label}</IonButton>
-            </IonItem>
+          
+          {cardData
+            .filter((card) => card.title.toLowerCase().includes(searchTerm.toLowerCase()))
+            .map((card, index) => (
+              <IonCard key={index} href={card.link}>
+                <IonCardHeader>
+                  <IonCardTitle>
+                    <IonGrid>
+                      <IonRow>
+                        <IonCol size="2">
+                          <IonIcon className="home-card-icon" icon={card.icon} color="primary" />
+                        </IonCol>
+                        <IonCol size="auto">
+                            <div className="home-card-title">{card.title}</div>
+                            <IonCardSubtitle>{card.subtitle}</IonCardSubtitle>
+                            {card.tags && Object.entries(card.tags).map(([key, icon], i) => (
+                              <IonIcon
+                                key={i}
+                                className="home-card-subicon"
+                                icon={icon}
+                                color="primary" // Set color as needed
+                              />
+                            ))}
+                          </IonCol>
+                      </IonRow>
+                    </IonGrid>
+                  </IonCardTitle>
+                </IonCardHeader>
+              </IonCard>
           ))}
-        </IonList>
-      </IonCardContent>
-    </IonCard>
-  );
-}
-
+        </IonContent>
+      </IonPage>
+    );
+};
+  
 export default Home;
+  
