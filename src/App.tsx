@@ -11,12 +11,12 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { calculatorOutline, closeCircleSharp, closeOutline, ellipse, homeOutline, personCircleOutline, personOutline, speedometerOutline, square, triangle } from 'ionicons/icons';
-import Home from './pages/Home';
-import Profile from './pages/Profile';
-import Clickcounter from './pages/Clickcounter';
-import Calculator from './pages/Calculator';
-import TodoList from './pages/TodoList'
-import Qoutegenerator from './pages/Quotegenerator'
+import Home from './pages/Home/Home';
+import Profile from './pages/Profile/Profile';
+import Clickcounter from './pages/Clickcounter/Clickcounter';
+import Calculator from './pages/Calculator/Calculator';
+import TodoList from './pages/TodoList/TodoList';
+import Qoutegenerator from './pages/Quotegenerator';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
