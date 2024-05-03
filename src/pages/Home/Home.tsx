@@ -1,123 +1,100 @@
 import React, { useState } from 'react';
 import {
-  IonBackButton,
-  IonButton,
-  IonButtons,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonCol,
   IonContent,
-  IonGrid,
   IonHeader,
-  IonIcon,
-  IonInput,
-  IonItem,
-  IonLabel,
-  IonList,
   IonPage,
-  IonRow,
+  IonSearchbar,
   IonTitle,
   IonToolbar,
-  IonItemDivider,
-  IonSearchbar,
-  IonBadge
-  
+  IonList,
+  IonItem,
+  IonThumbnail,
+  IonLabel,
 } from '@ionic/react';
-
-//Custom CSS
+import { useHistory } from 'react-router-dom';
 import './home.css';
 
-//Ionic Icons
-import { speedometerOutline,calculator,pencil, chatbubble, readerOutline, logoIonic,logoFirebase, logoReact} from 'ionicons/icons';
-
+// Define card data array
 const cardData = [
   {
-    title: 'Click Counter',
-    icon: speedometerOutline,
+    title: 'Clickcounter',
     subtitle: 'Applet #1',
     link: '/clickcounter',
-    
-
+    img: 'src/assets/click.png', // Adjusted image path
   },
   {
     title: 'Calculator',
-    icon: calculator,
     subtitle: 'Applet #2',
     link: '/calculator',
-   
+    img: 'src/assets/calcu.jpg', // Adjusted image path
   },
   {
-    title: 'To Do List',
-    icon: pencil,
+    title: 'Todo List',
     subtitle: 'Applet #3',
     link: '/todolist',
-
+    img: 'src/assets/todo.png', // Adjusted image path
   },
   {
     title: 'Quote Generator',
-    icon: chatbubble,
     subtitle: 'Applet #4',
-    link: '/quotegenerator',
-   
-  },
-  
+    link: '/quotegenerator', // Fixed typo in link
+    img: 'src/assets/quote.jpg', // Adjusted image path
+  }
 ];
 
-const Home: React.FC = () => {
-  {/*Dynamic Search*/}
-  const [searchTerm, setSearchTerm] = useState<string>('');
-  
-    return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Home</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent fullscreen>
-          <IonHeader collapse="condense">
-            <IonToolbar>
-              <IonTitle size="large">Home</IonTitle>
-            </IonToolbar>
-          </IonHeader>
-          
-          {/*Dynamic Search*/}
-          <IonSearchbar 
-            value={searchTerm} 
-            onIonInput={(e) => setSearchTerm(e.target.value ?? '')} 
-          />
-          
+function Home() {
+  // Initialize state for search term
+  const [searchTerm, setSearchTerm] = useState('');
+  const history = useHistory();
+
+  // Function to handle card click events
+  const handleCardClick = (link) => {
+    history.push(link); // Navigate to the specified route when a card is clicked
+  };
+
+  return (
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Welcome to My Applications</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
+        {/* Search bar to handle search term input */}
+        <IonSearchbar
+          value={searchTerm}
+          onIonChange={(e) => setSearchTerm(e.detail.value ?? '')}
+          placeholder="Search applications"
+        />
+        {/* Render the filtered list of applet cards */}
+        <IonList>
           {cardData
-            .filter((card) => card.title.toLowerCase().includes(searchTerm.toLowerCase()))
+            // Filter card data based on the search term (case-insensitive comparison)
+            .filter((card) =>
+              card.title.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+            // Map filtered card data to IonItem components
             .map((card, index) => (
-              <IonCard key={index} href={card.link}>
-                <IonCardHeader>
-                  <IonCardTitle>
-                    <IonGrid>
-                      <IonRow>
-                        <IonCol size="2">
-                          <IonIcon className="home-card-icon" icon={card.icon} color="primary" />
-                        </IonCol>
-                        <IonCol size="auto">
-                            <div className="home-card-title">{card.title}</div>
-                            <IonCardSubtitle>{card.subtitle}</IonCardSubtitle>
-                            
-                            
-                                
-                          </IonCol>
-                      </IonRow>
-                    </IonGrid>
-                  </IonCardTitle>
-                </IonCardHeader>
-              </IonCard>
-          ))}
-        </IonContent>
-      </IonPage>
-    );
-};
-  
+              <IonItem
+                key={index}
+                button
+                onClick={() => handleCardClick(card.link)} // Trigger handleCardClick function with the card's link when clicked
+              >
+                {/* Display the applet's image */}
+                <IonThumbnail slot="start">
+                  <img src={card.img} alt={card.title} />
+                </IonThumbnail>
+                {/* Display the applet's title and subtitle */}
+                <IonLabel>
+                  <h2>{card.title}</h2>
+                  <p>{card.subtitle}</p>
+                </IonLabel>
+              </IonItem>
+            ))}
+        </IonList>
+      </IonContent>
+    </IonPage>
+  );
+}
+ 
 export default Home;
-  
