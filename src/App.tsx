@@ -15,7 +15,7 @@ import Home from './pages/Home/Home';
 import Profile from './pages/Profile/Profile';
 import Clickcounter from './pages/Clickcounter/Clickcounter';
 import Calculator from './pages/Calculator/Calculator';
-import TodoList from './pages/TodoList/TodoList';
+import TodoList from './pages/Todolist/TodoList';
 import Qoutegenerator from './pages/Quotegenerator';
 
 /* Core CSS required for Ionic components to work properly */
