@@ -26,7 +26,7 @@ const cardData = [
     title: 'Calculator',
     subtitle: 'Applet #2',
     link: '/calculator',
-    img: 'src/assets/calcu.jpg', // Adjusted image path
+    img: 'src/assets/calcu.webp', // Adjusted image path
   },
   {
     title: 'Todo List',
@@ -39,6 +39,12 @@ const cardData = [
     subtitle: 'Applet #4',
     link: '/quotegenerator', // Fixed typo in link
     img: 'src/assets/quote.jpg', // Adjusted image path
+  },
+  {
+    title: 'notes',
+    subtitle: 'Applet #5',
+    link: '/notes', // Fixed typo in link
+    img: 'src/assets/note.webp', // Adjusted image path
   }
 ];
 
